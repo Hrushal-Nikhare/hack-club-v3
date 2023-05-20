@@ -3,24 +3,56 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 <style>
-	header {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	h1 {
-		margin: 0;
-		font-size: 2em;
-	}
+nav{
+	font-family: 'Nova Square', cursive;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	width: 100%;
+	background: rgba(241, 250, 238, 0.5);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 8px 18px -6px rgba(24, 39, 75, 0.12);
+	backdrop-filter: blur(3px);
+	position: sticky;
+	/* position: fixed; */
+	/* top: 0; */
+}
+.links{
+	background: #FFFFFF;
+box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 47px;
+padding: 11px 40px;
+}
+button{
+	background: #1D3557;
+border-radius: 8px;
+padding: 10px 30px;
+color: whitesmoke;
+font-size: 16px;
+}
+nav h1{
+	font-size: 32px;
+}
 </style>
 <header>
-<h1>{SITE_TITLE}</h1>
 	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/Hrushal-Nikhare" target="_blank">GitHub</HeaderLink>
+		<h1>HCP</h1>
+		<div class="links">
+			<!-- The Links -->
+			<HeaderLink href="/" >Home</HeaderLink>
+			<HeaderLink href="/#Intro">Intro</HeaderLink>
+			<HeaderLink href="/#Benefits">Benefits</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+		</div>
+		<div class="join">
+			<button>
+				Join Us!
+			</button>
+		</div>
 	</nav>
 </header>
 <style>

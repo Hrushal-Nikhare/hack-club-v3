@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+@font-face {
+  font-family: "Fervojo";
+  src: url("../fonts/Fervojo-Regular.otf");
+}
+@font-face {
+  font-family: "Now";
+  src: url("../fonts/Now-Regular.otf");
+}
+
+:root{
+  --red : #E63946;
+  --white: #F1FAEE;
+  --pale-blue: #A8DADC;
+  --blue: #457B9D;
+  --dark-blue: #1D3557;
+}
+
+html,body{
+  font-family: Now,'Times New Roman', Times, serif;
+  background-color: var(--white);
+  color: black;
+}
+
 /* The GOAT reset https://www.joshwcomeau.com/css/custom-css-reset/ */
 /*
   1. Use a more-intuitive box-sizing model.

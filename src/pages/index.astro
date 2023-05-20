@@ -1,52 +1,73 @@
 ---
-import BaseHead from "../components/BaseHead.astro"
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Slider from "../components/Slider.astro";
 ---
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<BaseHead title="HPC | HackClub Pune" description="Idk"/>
-	<style>
-		.container{
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-			background: #FEAC5E; 
-background: -webkit-linear-gradient(to left, #FEAC5E, #C779D0,#4bc0c8); 
-background: linear-gradient(to left, #FEAC5E, #C779D0,#4bc0c8); 
-		}
-		.text{
-			text-align: center;
-			color: white;
-			padding: 10%;
-			/* border: 3px solid black; */
-			background: rgba(0, 0, 0, 0.27);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.6px);
--webkit-backdrop-filter: blur(6.6px);
-border: 1px solid rgba(0, 0, 0, 0.44);
+  <head>
+    <BaseHead title="HPC | HackClub Pune" description="Idk" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
 
-		}
-		h1{
-			/* font-size: 5vw; */
-			font-size: 72px;
-  background: -webkit-linear-gradient( #8FFF85, #39A0FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-		}
-		p{
-			font-size: 2vw;
-		}
-	</style>
-</head>
-<body>
-	<div class="container">
-		<div class="text">
-			<h1>HPC</h1>
-			<p>Coming soon</p>
-		</div>
-	</div>
-</body>
+      :root {
+        --red: #e63946;
+        --white: #f1faee;
+        --pale-blue: #a8dadc;
+        --blue: #457b9d;
+        --dark-blue: #1d3557;
+      }
+      .content {
+        margin: 1%;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <br />
+    <br />
+    <br />
+    <div class="content">
+      <h1>
+        Unlock your creative potential <br />
+        with an all-in-one coding-powered community <br />
+        designed by creators, for creators
+      </h1>
+      <div class="sliderz">
+        <Slider />
+        <Slider />
+      </div>
+    </div>
+    <script>
+      $(document).on("click", 'a[href^="#"]', function (e) {
+        // target element id
+        var id = $(this).attr("href");
+
+        // target element
+        var $id = $(id);
+        if ($id.length === 0) {
+          return;
+        }
+
+        // prevent standard hash navigation (avoid blinking in IE)
+        e.preventDefault();
+
+        // top position relative to the document
+        var pos = $id.offset().top;
+
+        // animated top scrolling
+        $("body, html").animate(
+          {
+            scrollTop: pos,
+          },
+          1000
+        );
+      });
+    </script>
+  </body>
 </html>

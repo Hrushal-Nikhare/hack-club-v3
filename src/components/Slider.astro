@@ -1,0 +1,79 @@
+---
+import { Image } from "@astrojs/image/components";
+const images = await Astro.glob("../Images/*.jpg");
+import "@splidejs/splide/css";
+var lmao = 0;
+---
+
+<style>
+  .my-slider-progress {
+    background: #f1faee;
+  }
+
+  .my-slider-progress-bar {
+    background: #1d3557;
+    height: 4px;
+    transition: width 400ms ease;
+    width: 0;
+  }
+  .hmm {
+    text-align: center;
+  }
+  .splide__slide {
+    padding: 32px;
+  }
+</style>
+
+<!-- {images.map((image) => (
+                <li class="glide__slide">
+                    <img src={image.default.src} alt="Image description">
+                </li>
+            ))} -->
+<div class="splide">
+  <div class="splide__track">
+    <ul class="splide__list">
+      <!-- <li class="splide__slide">Slide 01</li> -->
+      {
+        images.map((image) => (
+          <li class="splide__slide">
+            <img data-splide-lazy={image.default.src} alt="Image description" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- Add the progress bar element -->
+  <div class="my-slider-progress">
+    <div class="my-slider-progress-bar"></div>
+  </div>
+</div>
+<div class="hmm">
+  The January 2023 Epoch Hackathon in New Delhi utilized CC BY 4.0 licensed
+  images.
+</div>
+
+<script>
+  import { Splide } from "@splidejs/splide";
+  import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
+  var splide = new Splide(".splide", {
+    lazyLoad: "nearby",
+    type: "loop",
+    drag: "free",
+    snap: true,
+    autoScroll: {
+      rewind: true,
+      speed: 2,
+    },
+  });
+  var bar = splide.root.querySelector(".my-slider-progress-bar");
+
+  // Updates the bar width whenever the carousel moves:
+  splide.on("mounted move", function () {
+    var end = splide.Components.Controller.getEnd() + 1;
+    var rate = Math.min((splide.index + 1) / end, 1);
+    bar.style.width = String(100 * rate) + "%";
+  });
+
+  splide.mount({ AutoScroll });
+</script>
