@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
 @font-face {
   font-family: "Fervojo";
   src: url("../fonts/Fervojo-Regular.otf");
@@ -22,7 +23,7 @@ html,body{
   color: black;
 }
 
-/* The GOAT reset https://www.joshwcomeau.com/css/custom-css-reset/ */
+The GOAT reset https://www.joshwcomeau.com/css/custom-css-reset/
 /*
   1. Use a more-intuitive box-sizing model.
 */

@@ -7,13 +7,18 @@ import Slider from "../components/Slider.astro";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title="HPC | HackClub Pune" description="Idk" />
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+    <BaseHead title="HCP | HackClub Pune" description="Idk" />
     <style>
+.great {
+  height: 1000px; /* Set a height to create scrollable content */
+  padding-top: 500px; /* Add some padding at the top to show the scroll trigger */
+}
+
+.h0 {
+  opacity: 1;
+  transition: opacity 1s ease; /* Add a transition for smooth opacity changes */
+  margin: 20px 0; /* Adjust margin as needed */
+}
 
       :root {
         --red: #e63946;
@@ -24,6 +29,9 @@ import Slider from "../components/Slider.astro";
       }
       .content {
         margin: 1%;
+      }
+      .great{
+        text-align: center;
       }
     </style>
   </head>
@@ -37,35 +45,120 @@ import Slider from "../components/Slider.astro";
         Unlock your creative potential <br />
         with an all-in-one coding-powered community <br />
         designed by creators, for creators
-      </h1>
+      </h1> 
         <Slider />
+      <br><br>
+      <div class="great">
+        <h1>HCP is Great For</h1>
+        <div class="switching-list">
+          <h1 class="h0 Active">Tiktokers</h1>
+          <h1 class="h0">Influencers</h1>
+          <h1 class="h0">YouTubers</h1>
+          <h1 class="h0">Creators</h1>
+        </div>
+      </div>
+      
+
+      <!-- <div id="Intro">
+        <h1>What is Hack Club?</h1>
+        <p>
+          Hack Club is a global nonprofit network of high school makers &
+          student-led coding clubs where young people build the agency, the
+          network, & the technical talent to think big & do big things in the
+          world.
+        </p>
+      </div> -->
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    
     <script>
-      $(document).on("click", 'a[href^="#"]', function (e) {
-        // target element id
-        var id = $(this).attr("href");
+//       import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
 
-        // target element
-        var $id = $(id);
-        if ($id.length === 0) {
-          return;
-        }
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.defaults({
+  markers: false
+});
 
-        // prevent standard hash navigation (avoid blinking in IE)
-        e.preventDefault();
+$(".h0.Active").each(function (index) {
+  let triggerElement = $(this);
+  let targetElement = $(".h0.Active");
+  let tl = gsap.timeline({
+    scrollTrigger: {
+  trigger: triggerElement,
+  start: "top 80%",
+  end: "top 20%",
+  scrub: 1
+}
+  });
+  tl.fromTo(targetElement, {
+    opacity: "100%",
+    duration: 1
+  }, {
+    opacity: "0%",
+    duration: 1
+  });
+});
 
-        // top position relative to the document
-        var pos = $id.offset().top;
 
-        // animated top scrolling
-        $("body, html").animate(
-          {
-            scrollTop: pos,
-          },
-          1000
-        );
-      });
+// import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+// ScrollTrigger.defaults({
+//   markers: false
+// });
+// // Animate From To
+// $(".H0.Active").each(function (index) {
+//   let triggerElement = $(this);
+//   let targetElement = $(".H0.Active");
+//   let tl = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: triggerElement,
+//       // trigger element - viewport
+//       start: "400px top",
+//       end: "-800px top",
+//       scrub: 1
+//     }
+//   });
+//   tl.fromTo(targetElement, {
+//       opacity: "100%",
+//       duration: 1
+//     },
+//     {
+//       opacity: "0%",
+//       duration: 1
+//     }
+//   );
+// });
+
+      // $(document).on("click", 'a[href^="#"]', function (e) {
+      //   // target element id
+      //   var id = $(this).attr("href");
+
+      //   // target element
+      //   var $id = $(id);
+      //   if ($id.length === 0) {
+      //     return;
+      //   }
+
+      //   // prevent standard hash navigation (avoid blinking in IE)
+      //   e.preventDefault();
+
+      //   // top position relative to the document
+      //   var pos = $id.offset().top;
+
+      //   // animated top scrolling
+      //   $("body, html").animate(
+      //     {
+      //       scrollTop: pos,
+      //     },
+      //     1000
+      //   );
+      // });
     </script>
   </body>
 </html>
