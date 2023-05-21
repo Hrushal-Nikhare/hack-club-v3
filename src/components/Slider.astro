@@ -24,15 +24,9 @@ var lmao = 0;
   }
 </style>
 
-<!-- {images.map((image) => (
-                <li class="glide__slide">
-                    <img src={image.default.src} alt="Image description">
-                </li>
-            ))} -->
 <div class="splide">
   <div class="splide__track">
     <ul class="splide__list">
-      <!-- <li class="splide__slide">Slide 01</li> -->
       {
         images.map((image) => (
           <li class="splide__slide">
@@ -42,8 +36,6 @@ var lmao = 0;
       }
     </ul>
   </div>
-
-  <!-- Add the progress bar element -->
   <div class="my-slider-progress">
     <div class="my-slider-progress-bar"></div>
   </div>
@@ -74,6 +66,5 @@ var lmao = 0;
     var rate = Math.min((splide.index + 1) / end, 1);
     bar.style.width = String(100 * rate) + "%";
   });
-
   splide.mount({ AutoScroll });
 </script>
